@@ -8,7 +8,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host : '127.0.0.1',
-    user : 'zlaughton',
+    user : '',
     password : '',
     database : 'face-recognition'
   }
@@ -84,7 +84,7 @@ app.get('/profile/:id', (req, res) => {
 
 app.put('/image', (req, res) => {
   const { id } = req.body;
-  database('users').where('id', '=', id)
+  db('users').where('id', '=', id)
   .increment('entries', 1)
   .returning('entries')
   .then(entries => {
